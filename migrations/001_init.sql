@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS users (
+  id VARCHAR(36) NOT NULL, 
+  email VARCHAR(128) NOT NULL, 
+  password VARCHAR(128) NOT NULL, 
+  name VARCHAR(128) NOT NULL,
+  balance DECIMAL(19, 4) NOT NULL,
+  date_of_birth DATETIME NOT NULL, 
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS events (
+  id VARCHAR(36) NOT NULL PRIMARY KEY,
+  title VARCHAR(128) NOT NULL,
+  description VARCHAR(128) NOT NULL,
+  quota_value DECIMAL(19, 4) NOT NULL,
+  date DATETIME NOT NULL,
+  created_by VARCHAR(36) NOT NULL,
+  FOREIGN KEY (created_by) REFERENCES users(id),
+  PRIMARY KEY (id)
+);

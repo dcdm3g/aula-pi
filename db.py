@@ -1,20 +1,20 @@
-# db.py
 from flask import g
 import mysql.connector
 
 def get_db():
-    if 'db' not in g:
-        g.db = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="1234",
-            database="sistema_apostas",
-            port="3306"
-        )
+  if 'db' not in g:
+    g.db = mysql.connector.connect(
+      host="localhost",
+      user="root",
+      password="docker",
+      database="serasa-bet",
+      port="3306"
+    )
+
     return g.db
 
 def close_db(e=None):
-    db = g.pop('db', None)
+  db = g.pop('db', None)
 
-    if db is not None:
-        db.close()
+  if db is not None:
+    db.close()

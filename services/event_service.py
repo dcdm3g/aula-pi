@@ -1,24 +1,23 @@
-# services/event_service.py
 from db import get_db
 
-def add_new_event(titulo, descricao, data_evento, cota_valor, criado_por):
+def add_new_event(title, description, date, quota_value, created_by):
     db = get_db()
     cursor = db.cursor()
     cursor.execute("""
-        INSERT INTO eventos (titulo, descricao, data_evento, cota_valor, criado_por)
+        INSERT INTO events (title, description, date, quota_value, created_by)
         VALUES (%s, %s, %s, %s, %s)
-    """, (titulo, descricao, data_evento, cota_valor, criado_por))
+    """, (title, description, date, quota_value, created_by))
     db.commit()
     cursor.close()
     return {"message": "Evento criado com sucesso, aguardando aprovação"}
 
-def get_events(filtro_status=None):
+def get_events(status_filter=None):
     db = get_db()
     cursor = db.cursor(dictionary=True)
-    query = "SELECT * FROM eventos"
-    if filtro_status:
+    query = "SELECT * FROM events"
+    if status_filter:
         query += " WHERE status = %s"
-        cursor.execute(query, (filtro_status,))
+        cursor.execute(query, (status_filter,))
     else:
         cursor.execute(query)
     events = cursor.fetchall()
@@ -29,8 +28,8 @@ def delete_event(event_id, user_id):
     db = get_db()
     cursor = db.cursor()
     cursor.execute("""
-        UPDATE eventos SET resultado = 'excluido' 
-        WHERE id = %s AND criado_por = %s AND status = 'aguardando'
+        UPDATE events SET result = 'excluido' 
+        WHERE id = %s AND created_by = %s AND status = 'aguardando'
     """, (event_id, user_id))
     db.commit()
     cursor.close()
