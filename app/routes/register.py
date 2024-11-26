@@ -26,8 +26,6 @@ def register_route():
   except ValidationError as err:
     return jsonify(err.messages), 400
   
-  print('hello')
-  
   name = data.get('name')
   date_of_birth = data.get('date_of_birth')
   email = data.get('email')
@@ -35,8 +33,6 @@ def register_route():
   
   db = get_db()
   cursor = db.cursor()
-
-  print('connected')
 
   cursor.execute("""
     SELECT *

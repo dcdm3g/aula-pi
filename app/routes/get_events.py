@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.guards.auth_required import auth_required
 from app.db.connection import get_db
 
