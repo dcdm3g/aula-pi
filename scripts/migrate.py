@@ -2,7 +2,7 @@ import os
 import mysql.connector
 from dotenv import load_dotenv
 
-load_dotenv('.env.local')
+load_dotenv()
 
 def apply_migration(cursor, migration_file):
   with open(migration_file, 'r') as f:
