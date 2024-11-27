@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from flask_cors import CORS
 from app.routes.register import register_bp
 from app.routes.login import login_bp
+from app.routes.refresh_session import refresh_session_bp
 from app.routes.add_event import add_event_bp
 from app.routes.get_events import get_events_bp
 from app.routes.evaluate_event import evaluate_event_bp
@@ -34,5 +35,6 @@ def create_app():
   app.register_blueprint(get_wallet_history_bp)
   app.register_blueprint(bet_on_event_bp)
   app.register_blueprint(finish_event_bp)
+  app.register_blueprint(refresh_session_bp)
 
   return app
