@@ -1,5 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
+from flask_cors import CORS
 from app.routes.register import register_bp
 from app.routes.login import login_bp
 from app.routes.add_event import add_event_bp
@@ -17,6 +18,8 @@ load_dotenv()
 
 def create_app():
   app = Flask(__name__)
+  CORS(app)
+
   app.config.from_object('config')
 
   app.register_blueprint(register_bp)
