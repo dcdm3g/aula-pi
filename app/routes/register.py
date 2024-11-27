@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, make_response
 from marshmallow import Schema, fields, validate, ValidationError
 from datetime import datetime
 import uuid
@@ -63,4 +63,9 @@ def register_route():
     "email": email,
   })
 
-  return jsonify(tokens)
+  response = make_response()
+
+  response.set_cookie("access_token", tokens.get('access_token'))
+  response.set_cookie("refresh_token", tokens.get('refresh_token'))
+
+  return response, 201
