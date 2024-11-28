@@ -5,6 +5,7 @@ from app.routes.register import register_bp
 from app.routes.login import login_bp
 from app.routes.refresh_session import refresh_session_bp
 from app.routes.add_event import add_event_bp
+from app.routes.get_events_overview import get_events_overview_bp
 from app.routes.get_events import get_events_bp
 from app.routes.get_event import get_event_bp
 from app.routes.evaluate_event import evaluate_event_bp
@@ -27,6 +28,7 @@ def create_app():
   app.register_blueprint(register_bp)
   app.register_blueprint(login_bp)
   app.register_blueprint(add_event_bp)
+  app.register_blueprint(get_events_overview_bp)
   app.register_blueprint(get_events_bp)
   app.register_blueprint(get_event_bp)
   app.register_blueprint(evaluate_event_bp)
