@@ -36,7 +36,16 @@ def refresh_session_route():
 
   response = make_response()
 
-  response.set_cookie("access_token", tokens.get('access_token'))
-  response.set_cookie("refresh_token", tokens.get('refresh_token'))
+  response.set_cookie(
+    "access_token", 
+    tokens.get('access_token'),
+    httponly=True, path="/", max_age=3600, samesite="None"
+  )
+
+  response.set_cookie(
+    "refresh_token",
+    tokens.get('refresh_token'),
+    httponly=True, path="/", max_age=1728000, samesite="None"
+  )
 
   return response, 201
