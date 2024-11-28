@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, make_response
 from jwt.exceptions import DecodeError
 import jwt
 import os
@@ -34,6 +34,9 @@ def refresh_session_route():
     "role": role,
   })
 
-  return jsonify(tokens)
+  response = make_response()
 
+  response.set_cookie("access_token", tokens.get('access_token'))
+  response.set_cookie("refresh_token", tokens.get('refresh_token'))
 
+  return response, 201
