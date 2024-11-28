@@ -4,7 +4,7 @@ from app.db.connection import get_db
 
 get_bet_count_bp = Blueprint('get_bet_count', __name__)
 
-@get_bet_count_bp.route('/bet-count', methods=['GET'])
+@get_bet_count_bp.route('/wallet/bet-count', methods=['GET'])
 @auth_required
 def get_bet_count_route(user):
   db = get_db()
