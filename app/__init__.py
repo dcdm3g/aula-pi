@@ -12,6 +12,7 @@ from app.routes.evaluate_event import evaluate_event_bp
 from app.routes.revoke_event import revoke_event_bp
 from app.routes.deposit_into_wallet import deposit_into_wallet_bp
 from app.routes.withdraw_from_wallet import withdraw_from_wallet_bp
+from app.routes.get_bet_count import get_bet_count_bp
 from app.routes.get_balance import get_balance_bp
 from app.routes.get_wallet_history import get_wallet_history_bp
 from app.routes.bet_on_event import bet_on_event_bp
@@ -35,6 +36,7 @@ def create_app():
   app.register_blueprint(revoke_event_bp)
   app.register_blueprint(deposit_into_wallet_bp)
   app.register_blueprint(withdraw_from_wallet_bp)
+  app.register_blueprint(get_bet_count_bp)
   app.register_blueprint(get_balance_bp)
   app.register_blueprint(get_wallet_history_bp)
   app.register_blueprint(bet_on_event_bp)
