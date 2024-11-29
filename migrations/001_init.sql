@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id CHAR(36) NOT NULL, 
   email VARCHAR(128) NOT NULL, 
   password VARCHAR(128) NOT NULL, 
@@ -11,7 +11,7 @@ CREATE TABLE users (
   UNIQUE INDEX unique_email (email)
 );
 
-CREATE TABLE events (
+CREATE TABLE IF NOT EXISTS events (
   id CHAR(36) NOT NULL,
   title VARCHAR(128) NOT NULL,
   description VARCHAR(128) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE events (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE bets (
+CREATE TABLE IF NOT EXISTS bets (
   id CHAR(36) NOT NULL,
   user_id CHAR(36) NOT NULL,
   event_id CHAR(36) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE bets (
   FOREIGN KEY (event_id) REFERENCES events(id)
 );
 
-CREATE TABLE transactions (
+CREATE TABLE IF NOT EXISTS transactions (
   id CHAR(36) NOT NULL,
   type ENUM('deposit', 'withdraw') NOT NULL,
   user_id CHAR(36) NOT NULL,
