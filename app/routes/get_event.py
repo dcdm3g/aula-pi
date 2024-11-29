@@ -8,7 +8,7 @@ get_event_bp = Blueprint('get_event', __name__)
 @auth_required
 def get_event_route(user, event_id):
   db = get_db()
-  cursor = db.cursor()
+  cursor = db.cursor(dictionary=True)
 
   cursor.execute("""
     SELECT id, title, description, event_date, betting_start_date, betting_end_date, odds_value
@@ -16,7 +16,7 @@ def get_event_route(user, event_id):
     where status = "approved" AND id = %s
   """, (event_id,))
 
-  event, = cursor.fetchone()
+  event = cursor.fetchone()
   cursor.close()
 
   if not event:
