@@ -26,4 +26,4 @@ def get_events_route(user):
   events = cursor.fetchall()
   cursor.close()
 
-  return jsonify(events or []), 200
+  return jsonify({ "events": events or [] }), 200
