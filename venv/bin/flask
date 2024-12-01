@@ -1,4 +1,4 @@
-#!/home/davi/www/aula-pi-api/venv/bin/python
+#!/home/davi/www/aula-pi/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

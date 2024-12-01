@@ -50,8 +50,8 @@ def evaluate_event_route(user, event_id):
   cursor.execute("""
     SELECT title
     FROM events
-    WHERE created_by = %s AND id = %s
-  """, (user.get('id'), event_id))
+    WHERE id = %s
+  """, (event_id))
 
   event = cursor.fetchone()
 
